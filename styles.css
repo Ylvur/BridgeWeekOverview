@@ -40,7 +40,7 @@ header.day-header {
     color: white;
     padding: 0.5rem;
     font-weight: bold;
-    font-size: 20px;
+    font-size: 28px;
     text-align: center;
     border-radius: 6px 6px 0 0;
 }
@@ -50,7 +50,7 @@ header.day-header-weekend {
     color: white;
     padding: 0.5rem;
     font-weight: bold;
-    font-size: 20px;
+    font-size: 28px;
     text-align: center;
     border-radius: 6px 6px 0 0;
 }
@@ -60,7 +60,7 @@ div.events {
     flex-grow: 1; /* Take up remaining space */
     display: flex;
     flex-direction: column;
-    gap: 0.5rem;
+    gap: 0em;
 }
 
 article.event-box {
@@ -81,30 +81,23 @@ article.event-box {
 
 .event-club {
     margin-bottom: 0.5rem;
-    font-size: 20px;
-    color: #darkgrey;
+    font-size: 22px;
+    color: #747474;
+
 }
+
 
 .event-heading {
     font-size: 26px;
     font-weight: bold;
-    color: #004d40;
+    /* color: #004d40;*/
+    color: #36454F;
     margin-top: 0.5rem;
     margin-bottom: 0.5rem;
 }
 
-    .event-heading a {
-        text-decoration: none;
-        color: inherit;
-    }
-
-        .event-heading a:hover,
-        .event-heading a:focus {
-            text-decoration: underline;
-        }
-
 @media (max-width: 768px) {
     main.calendar {
-        grid-template-columns: 1fr; /* Single column layout on small screens */
+        grid-template-columns: 1fr; 
     }
 }
