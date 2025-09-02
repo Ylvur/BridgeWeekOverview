@@ -1,103 +1,96 @@
-﻿
-html, body {
-    height: 100%; /* Ensure the page uses full height */
+﻿html, body {
     margin: 0;
     padding: 0;
-}
-
-body {
-    font-family: Arial, sans-serif;
-    background: #f9f9f9;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden;
+    font-family: 'Segoe UI', sans-serif;
+    background: #f0f0f0;
 }
 
 h1 {
     text-align: center;
-    margin: 1rem 0;
+    font-size: 2.5vw;
+    margin: 0.5vw 0;
+    color: #003366;
 }
 
 main.calendar {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 0rem;
-    padding: 1rem;
-    flex-grow: 1; /* Make sure the calendar takes available vertical space */
+    grid-template-columns: repeat(7, 1fr); /* En kolumn per veckodag */
+    height: calc(100vh - 4vw); /* Lämnar plats för rubriken */
+    column-gap: 0.2vw;
+    row-gap: 0.6vw;
+    padding: 0 0.5vw;
+    box-sizing: border-box;
 }
 
 section.day-column {
-    background: white;
-    border-radius: 6px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background: #fff;
+    border-radius: 0.5vw;
     display: flex;
     flex-direction: column;
-    height: 100%; /* Full height of the column */
+    overflow: hidden;
+    height: 100%;
+    box-shadow: 0 0 0.5vw rgba(0,0,0,0.1);
+}
+
+header.day-header,
+header.day-header-weekend {
+    font-size: 1.3vw;
+    padding: 0.8vw;
+    text-align: center;
+    font-weight: bold;
+    color: white;
 }
 
 header.day-header {
     background: #005a87;
-    color: white;
-    padding: 0.5rem;
-    font-weight: bold;
-    font-size: 28px;
-    text-align: center;
-    border-radius: 6px 6px 0 0;
 }
 
 header.day-header-weekend {
     background: darkred;
-    color: white;
-    padding: 0.5rem;
-    font-weight: bold;
-    font-size: 28px;
-    text-align: center;
-    border-radius: 6px 6px 0 0;
 }
 
 div.events {
-    padding: 1rem;
-    flex-grow: 1; /* Take up remaining space */
+    padding: 0.5vw;
     display: flex;
     flex-direction: column;
-    gap: 0em;
+    gap: 0.5vw;
+    overflow: hidden;
+    flex-grow: 1;
+    justify-content: flex-start;
 }
-
 article.event-box {
     background: #e3f2fd;
-    border-left: 4px solid #0288d1;
-    padding: 1rem;
-    border-radius: 4px;
-    margin-bottom: 1rem;
+    /* border-left: 0.4vw solid #0288d1;*/
+    padding: 0.5vw;
+    border-radius: 0.3vw;
+    padding-bottom: 0.8vw;
 }
 
 .event-playtime {
+    font-size: 1.5vw;
     font-weight: bold;
-    font-size: 18px;
     color: #0277bd;
-    margin-bottom: 0.5rem;
-    font-size: 36px;
+}
+
+.event-heading {
+    font-size: 1.0vw;
+    font-weight: bold;
+    color: #36454F;
 }
 
 .event-club {
-    margin-bottom: 0.5rem;
-    font-size: 22px;
-    color: #747474;
-
+    font-size: 0.9vw;
+    color: #666;
 }
 
-
-.event-heading {
-    font-size: 26px;
-    font-weight: bold;
-    /* color: #004d40;*/
-    color: #36454F;
-    margin-top: 0.5rem;
-    margin-bottom: 0.5rem;
-}
-
-@media (max-width: 768px) {
+/* Om skärmen är mindre – slå ihop kolumner */
+@media (max-width: 1600px) {
     main.calendar {
-        grid-template-columns: 1fr; 
+        grid-template-columns: repeat(4, 1fr);
+        grid-auto-rows: 1fr;
+        overflow-y: auto;
     }
 }
