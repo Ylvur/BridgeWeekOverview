@@ -96,13 +96,19 @@ article.event-box {
     font-size: 1.5vw;
     font-weight: bold;
     color: #0277bd;
-    line-height: 1.1; /* Klubben hamnar tätt under tiden */
+    line-height: 1.1;
+    /* Linje bara under tidens text: display: table krymper bredden till texten men behåller egen rad */
+    display: table;
+    padding-bottom: 0.2vw;
+    border-bottom: 0.1vw solid #005a87;
+    border-image: linear-gradient(to right, #005a87, #90caf9) 1; /* Mörkblå till ljusblå */
 }
 
 .event-club {
+    margin-top: 0.3vw;
     font-size: 1.0vw;
-    color: #333;
-    margin-top: 0.1vw;
+    font-weight: bold;
+    color: #005a87;
     margin-bottom: 0.3vw;
 }
 
@@ -127,7 +133,7 @@ ul.event-heading-list li {
 
 /* Mellanrum mellan rubrikerna så att texter på flera rader går att skilja åt */
 ul.event-heading-list li + li {
-    margin-top: 0.4vw;
+    margin-top: 0.15vw;
 }
 
 ul.event-heading-list li::before {
