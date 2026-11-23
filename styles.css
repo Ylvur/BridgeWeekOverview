@@ -1,161 +1,313 @@
-﻿html, body {
+﻿/* TV-layout 1920x1080. 1rem = 16px vid 1920 bred och skalar med skärmbredden, så samma layout passar alla TV-storlekar. */
+html {
+    font-size: 0.8333vw;
+}
+
+html, body {
     margin: 0;
     padding: 0;
-    height: 100vh;
-    width: 100vw;
-    overflow: hidden;
-    /* Segoe UI finns bara på Windows – TV-webbläsare faller tillbaka på Roboto (Android TV) m.fl. */
-    font-family: 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-    background: #f0f0f0;
-}
-
-h1 {
-    text-align: center;
-    font-size: 2.5vw;
-    margin: 0.5vw 0;
-    color: #003366;
-}
-
-main.calendar {
-    display: grid;
-    grid-template-columns: repeat(7, 1fr); /* En kolumn per veckodag */
-    height: calc(100vh - 4vw); /* Lämnar plats för rubriken */
-    grid-column-gap: 0.2vw; /* Äldre namn, för äldre TV-webbläsare */
-    grid-row-gap: 0.6vw;
-    column-gap: 0.2vw;
-    row-gap: 0.6vw;
-    padding: 0; /* Ingen marginal mot skärmkanten på TV */
-    box-sizing: border-box;
-}
-
-section.day-column {
-    background: #fff;
-    border-radius: 0.5vw;
-    display: flex;
-    flex-direction: column;
-    overflow: hidden;
+    width: 100%;
     height: 100%;
-    box-shadow: 0 0 0.5vw rgba(0,0,0,0.1);
-}
-
-header.day-header,
-header.day-header-weekend {
-    font-size: 1.3vw;
-    padding: 0.8vw;
-    text-align: center;
-    font-weight: bold;
-    color: white;
-}
-
-header.day-header {
-    background: #005a87;
-}
-
-/* Dagens kolumn (variant B) – klassen "idag" sätts av skriptet i kalender.html */
-section.day-column.idag {
-    outline: 0.25vw solid #0277bd;
-    outline-offset: -0.25vw;
-}
-section.day-column.idag header {
-    background: #0277bd;
-}
-/* Idag på lördag/söndag: röd variant */
-section.day-column.idag.helg {
-    outline-color: #c62828;
-}
-section.day-column.idag.helg header {
-    background: #c62828;
-}
-header.day-header-weekend {
-    background: darkred;
-}
-
-div.events {
-    padding: 0.2vw; /* Litet vitt runt korten så att de fyller ut kolumnen */
-    display: flex;
-    flex-direction: column;
     overflow: hidden;
-    flex-grow: 1;
-    justify-content: flex-start;
+    background: #0b1220;
+    color: #e5e7eb;
+    /* Inter om den finns, annars systemets sans-serif (Roboto på Android TV) */
+    font-family: Inter, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
 }
 
-/* Mellanrum mellan korten. Marginal i stället för flex-"gap" som saknas i äldre TV-webbläsare. */
-div.events > * + * {
-    margin-top: 0.3vw;
-}
-article.event-box {
-    background: #e3f2fd;
-    /* border-left: 0.4vw solid #0288d1;*/
-    padding: 0.5vw;
-    border-radius: 0.3vw;
-    padding-bottom: 0.8vw;
-}
-
-/* Ordning på kortet: speltid, klubb, rubrik */
-.event-playtime {
-    font-size: 1.5vw;
-    font-weight: bold;
-    color: #0277bd;
-    line-height: 1.1;
-    /* Linje bara under tidens text: display: table krymper bredden till texten men behåller egen rad */
-    display: table;
-    padding-bottom: 0.2vw;
-    border-bottom: 0.1vw solid #005a87;
-    border-image: linear-gradient(to right, #005a87, #90caf9) 1; /* Mörkblå till ljusblå */
+/* ---------- Sidor och rotation ---------- */
+.sida {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+    padding: 1.4rem 2rem 2rem 2rem;
 }
 
-.event-club {
-    margin-top: 0.3vw;
-    font-size: 1.0vw;
-    font-weight: bold;
-    color: #005a87;
-    margin-bottom: 0.3vw;
+.sida.aktiv {
+    display: block;
 }
 
-.event-heading {
-    font-size: 1.0vw;
-    font-weight: bold;
-    color: #36454F;
+.prickar {
+    position: absolute;
+    top: 1.6rem;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    z-index: 5;
 }
 
-/* Flera lappar från samma klubb och tid – rubrikerna listas under varandra */
-ul.event-heading-list {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-}
-
-/* Hängande indrag: radbrytningar hamnar i linje med texten, inte under strecket */
-ul.event-heading-list li {
-    padding-left: 0.7em;
-    text-indent: -0.7em;
-}
-
-/* Mellanrum mellan rubrikerna så att texter på flera rader går att skilja åt */
-ul.event-heading-list li + li {
-    margin-top: 0.15vw;
-}
-
-ul.event-heading-list li::before {
-    content: "- ";
-}
-
-/* Liten blå etikett längst ner på kortet när alla rubriker har "med partnergaranti" */
-.partner-guarantee {
+.prickar span {
     display: inline-block;
-    margin-top: 0.7vw;
-    padding: 0.1vw 0.45vw;
-    border-radius: 0.3vw;
-    background: #0277bd; /* Samma blå som speltiden */
-    color: #fff;
-    font-size: 0.75vw;
+    width: 0.8rem;
+    height: 0.8rem;
+    margin: 0 0.4rem;
+    border-radius: 50%;
+    background: #2a3a5a;
+}
+
+.prickar span.aktiv {
+    background: #f0b429;
+}
+
+/* ---------- Rubrikrad ---------- */
+.topp {
+    display: flex;
+    align-items: baseline;
+    height: 6rem;
+}
+
+.topp h1 {
+    margin: 0;
+    font-size: 4.4rem;
+    line-height: 1;
+    font-weight: 800;
+    color: #f0b429;
+}
+
+.topp .datum {
+    margin-left: 1.8rem;
+    font-size: 2.6rem;
+    color: #8a96ad;
+}
+
+.hogerdel {
+    margin-left: auto;
+    display: flex;
+    align-items: baseline;
+}
+
+.forklaring {
+    font-size: 1.7rem;
+    color: #d6dbe6;
+}
+
+.forklaring .ikon {
+    fill: #f07a12;
+    width: 1.7rem;
+    height: 1.7rem;
+    margin-right: 0.5rem;
+    vertical-align: -0.2rem;
+}
+
+.klocka {
+    margin-left: 4.5rem;
+    font-size: 3.8rem;
+    letter-spacing: 0.05em;
+    color: #d6dbe6;
+    font-weight: 300;
+}
+
+/* ---------- Kort ---------- */
+.kort {
+    position: relative;
+    box-sizing: border-box;
+    border-left: 0.6rem solid transparent; /* samma kant som hemmakorten, så att texten ligger i linje */
+    background: #111f36;
+    border-radius: 0.9rem;
+}
+
+.kort.hem {
+    background: #35220f;
+    border-left: 0.6rem solid #f07a12;
+}
+
+.kort .tid {
+    font-weight: 800;
+    color: #e5e7eb;
+    line-height: 1;
+}
+
+.kort .slut {
+    font-weight: 600;
+    color: #8a96ad;
+}
+
+.kort .titel {
+    font-weight: 700;
+    color: #e5e7eb;
+}
+
+.kort .plats {
+    color: #d6dbe6;
+}
+
+.kort .plats .klubb {
+    color: #6f7f9c;
+}
+
+.kort.hem .plats {
+    color: #f4a35a;
+}
+
+.kort.hem .plats .klubb {
+    color: #a0825f;
+}
+
+.kort .ikon {
+    fill: #7f8fb0;
+    vertical-align: -0.15em;
+    width: 1em;
+    height: 1em;
+    margin-right: 0.35em;
+}
+
+.kort.hem .ikon {
+    fill: #f07a12;
+}
+
+/* Etiketter uppe till höger på kortet: Nybörjare, Föranmälan, Partnergaranti */
+.badges {
+    position: absolute;
+    display: -webkit-box;
+    display: flex;
+}
+
+.badge {
+    display: block;
+    background: #f0b429;
+    color: #1a1204;
+    font-weight: 800;
+    border-radius: 2rem;
+    white-space: nowrap;
+}
+
+.badge.foranmalan {
+    background: #7dd3fc;
+}
+
+.badge.nyborjare {
+    background: #86efac;
+}
+
+/* ---------- Alla sidor: lista med kort (samma utseende som "Spela idag") ----------
+   Allt inne i listan är i em. app.js sätter font-size på .lista (1rem = normalt) och minskar den
+   om en enda dag har fler speltillfällen än som får plats på en sida. */
+.lista {
+    margin-top: 1.4rem;
+    height: calc(100% - 7.4rem);
+    overflow: hidden;
+    font-size: 1rem;
+}
+
+.lista .kort {
+    height: 10em;
+    margin-top: 2.4em;
+    padding-left: 3em;
+}
+
+.lista > :first-child {
+    margin-top: 0;
+}
+
+.lista .tid {
+    position: absolute;
+    left: 3em;
+    top: 50%;
+    margin-top: -3.3em;
+    height: 6.6em;
+    line-height: 6.6em;
+    white-space: nowrap;
+}
+
+.lista .start {
+    font-size: 6.25em;
+}
+
+.lista .slut {
+    font-size: 3.75em;
+}
+
+.lista .titel {
+    position: absolute;
+    left: 12.3077em; /* 40em räknat på textens egen storlek (3.25em) */
+    top: 0.4923em;
+    font-size: 3.25em;
+    line-height: 1.1;
+}
+
+.lista .plats {
+    position: absolute;
+    left: 16.6667em; /* 40em räknat på 2.4em */
+    top: 2.4583em;
+    font-size: 2.4em;
+    line-height: 1.1;
+}
+
+.lista .badges {
+    right: 1.9em;
+    top: 50%;
+    margin-top: -1.55em;
+}
+
+.lista .badge {
+    margin-left: 0.4762em; /* mått räknade på textens egen storlek (2.1em) */
+    padding: 0 0.619em;
+    height: 1.4762em;
+    line-height: 1.4762em;
+    font-size: 2.1em;
+}
+
+.lista .badge.garanti:before {
+    content: "\2605\00a0";
+}
+
+/* Speltillfällen som redan är slut idag tonas ner */
+.lista .kort.passerad {
+    opacity: 0.4;
+}
+
+/* Rubrik för en ny dag längre ner på samma sida (första dagen på sidan har rubriken i toppraden) */
+.lista .dagrubrik {
+    margin-top: 3em;
+    height: 3.4em;
+    line-height: 3.4em;
+    white-space: nowrap;
+}
+
+.lista .dagrubrik .namn {
+    font-size: 2.8em;
+    font-weight: 800;
+    color: #f0b429;
+}
+
+.lista .dagrubrik .datum {
+    margin-left: 0.6em;
+    font-size: 2em;
+    color: #8a96ad;
+}
+
+.lista .dagrubrik.helg .namn,
+.topp.helg h1 {
+    color: #ef6b73;
+}
+
+.lista .dagrubrik + .kort {
+    margin-top: 1.4em;
 }
 
 /* Dag utan speltillfällen */
-.no-events {
-    font-size: 1.0vw;
-    color: #888;
-    font-style: italic;
+.lista .inga {
+    margin-top: 1em;
+    height: 3em;
+    line-height: 3em;
+    color: #6f7f9c;
+}
+
+.lista .inga span {
+    font-size: 2.2em;
+}
+
+.lista .inga.stor {
+    margin-top: 6em;
+    height: auto;
+    line-height: 1.2;
     text-align: center;
-    margin-top: 1vw;
+}
+
+.lista .inga.stor span {
+    font-size: 3em;
 }
