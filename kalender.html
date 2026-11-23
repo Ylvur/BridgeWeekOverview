@@ -3,221 +3,130 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta http-equiv="refresh" content="300" /> <!-- Ladda om var 5:e minut -->
-    <title>Veckans speltillfällen</title>
-    <link rel="stylesheet" href="styles.css?v=ff62ec85" />
+    <title>Spel idag – Bridgens Hus</title>
+    <link rel="stylesheet" href="styles.css?v=91f16db9" />
 </head>
 <body>
-    <h1> <span style="font-size:1.6vw;color:lightgray;">.♣.♦.♥.♠.♣.♦.♥.♠.</span>&nbsp;&nbsp;Veckans speltillfällen v48&nbsp;&nbsp;<span style="font-size:1.6vw;color:lightgray;">.♠.♥.♦.♣.♠.♥.♦.♣.</span></h1>
+<div class="prickar" id="prickar"></div>
+<div id="sidor"></div>
 
-    <main class="calendar">
-<section class="day-column" aria-label="m&#229;n 23 nov">
-  <header class="day-header">m&#229;n 23 nov</header>
-  <div class="events">
-    <article class="event-box">
-      <div class="event-playtime">00:00</div>
-      <div class="event-club">BK Everfresh</div>
-      <div class="event-heading">Fuerteventura T&#228;vling 3</div>
+<div id="topp-mall" style="display:none">
+    <header class="topp">
+      <h1></h1><span class="datum"></span>
+      <div class="hogerdel">
+        <span class="forklaring"><svg class="ikon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 1.5 12.5H5V21h5.5v-6h3v6H19v-8.5h3.5z"/></svg>Bridgens Hus</span><span class="klocka"></span>
+      </div>
+    </header>
+</div>
+
+<div id="data" style="display:none">
+  <section class="dag" data-date="2026-11-23">
+    <article class="kort hem" data-start="600" data-end="840">
+      <div class="tid"><span class="start">10</span><span class="slut">–14</span></div>
+      <div class="badges"><span class="badge garanti">Partnergaranti</span></div>
+      <div class="titel">Part&#228;vling</div>
+      <div class="plats"><svg class="ikon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 1.5 12.5H5V21h5.5v-6h3v6H19v-8.5h3.5z"/></svg>Bridgens Hus <span class="klubb">(BK Everfresh)</span></div>
     </article>
-
-    <article class="event-box">
-      <div class="event-playtime">10:00-14:00</div>
-      <div class="event-club">BK Everfresh</div>
-      <ul class="event-heading event-heading-list">
-        <li>Ruter/Kl&#246;ver. Partnergaranti</li>
-        <li>Hj&#228;rter Partnergaranti</li>
-      </ul>
+    <article class="kort borta" data-start="750" data-end="990">
+      <div class="tid"><span class="start">12:30</span><span class="slut">–16:30</span></div>
+      <div class="titel">Part&#228;vling</div>
+      <div class="plats"><svg class="ikon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a7 7 0 0 0-7 7c0 5.2 7 13 7 13s7-7.8 7-13a7 7 0 0 0-7-7zm0 9.5a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5z"/></svg>Kungsbacka Golfklubb <span class="klubb">(Hamra BK)</span></div>
     </article>
-
-    <article class="event-box">
-      <div class="event-playtime">12:30-16:30</div>
-      <div class="event-club">Hamra BK</div>
-      <div class="event-heading">Part&#228;vling</div>
+    <article class="kort hem" data-start="1110" data-end="1335">
+      <div class="tid"><span class="start">18:30</span><span class="slut">–22:15</span></div>
+      <div class="badges"><span class="badge garanti">Partnergaranti</span></div>
+      <div class="titel">Part&#228;vling</div>
+      <div class="plats"><svg class="ikon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 1.5 12.5H5V21h5.5v-6h3v6H19v-8.5h3.5z"/></svg>Bridgens Hus <span class="klubb">(Askims BK)</span></div>
     </article>
-
-    <article class="event-box">
-      <div class="event-playtime">18:30-22:15</div>
-      <div class="event-club">Askims BK</div>
-      <div class="event-heading">Ruter-Hj&#228;rter</div>
-      <div class="partner-guarantee">Partnergaranti</div>
+  </section>
+  <section class="dag" data-date="2026-11-24">
+    <article class="kort hem" data-start="840" data-end="1080">
+      <div class="tid"><span class="start">14</span><span class="slut">–18</span></div>
+      <div class="badges"><span class="badge garanti">Partnergaranti</span></div>
+      <div class="titel">Part&#228;vling</div>
+      <div class="plats"><svg class="ikon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 1.5 12.5H5V21h5.5v-6h3v6H19v-8.5h3.5z"/></svg>Bridgens Hus <span class="klubb">(BK Everfresh)</span></div>
     </article>
-
-  </div>
-</section>
-
-<section class="day-column" aria-label="tis 24 nov">
-  <header class="day-header">tis 24 nov</header>
-  <div class="events">
-    <article class="event-box">
-      <div class="event-playtime">14:00-18:00</div>
-      <div class="event-club">BK Everfresh</div>
-      <div class="event-heading">Hj&#228;rter / Ruter Partnergaranti</div>
+    <article class="kort hem" data-start="1110" data-end="-1">
+      <div class="tid"><span class="start">18:30</span></div>
+      <div class="titel">Extra Lagt&#228;vling &#246;ver 3 omg&#229;ngar</div>
+      <div class="plats"><svg class="ikon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 1.5 12.5H5V21h5.5v-6h3v6H19v-8.5h3.5z"/></svg>Bridgens Hus <span class="klubb">(BK Lagspelet)</span></div>
     </article>
-
-    <article class="event-box">
-      <div class="event-playtime">18:30</div>
-      <div class="event-club">BK Lagspelet</div>
-      <div class="event-heading">Extra Lagt&#228;vling &#246;ver 3 omg&#229;ngar</div>
+  </section>
+  <section class="dag" data-date="2026-11-25">
+    <article class="kort hem" data-start="600" data-end="840">
+      <div class="tid"><span class="start">10</span><span class="slut">–14</span></div>
+      <div class="titel">Part&#228;vling</div>
+      <div class="plats"><svg class="ikon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 1.5 12.5H5V21h5.5v-6h3v6H19v-8.5h3.5z"/></svg>Bridgens Hus <span class="klubb">(BK Lejonet)</span></div>
     </article>
-
-  </div>
-</section>
-
-<section class="day-column" aria-label="ons 25 nov">
-  <header class="day-header">ons 25 nov</header>
-  <div class="events">
-    <article class="event-box">
-      <div class="event-playtime">00:00</div>
-      <div class="event-club">BK Everfresh</div>
-      <div class="event-heading">Fuerteventura Huvudt&#228;vling dag 1</div>
+    <article class="kort borta" data-start="750" data-end="990">
+      <div class="tid"><span class="start">12:30</span><span class="slut">–16:30</span></div>
+      <div class="titel">Part&#228;vling</div>
+      <div class="plats"><svg class="ikon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a7 7 0 0 0-7 7c0 5.2 7 13 7 13s7-7.8 7-13a7 7 0 0 0-7-7zm0 9.5a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5z"/></svg>Kungsbacka Golfklubb <span class="klubb">(Hamra BK)</span></div>
     </article>
-
-    <article class="event-box">
-      <div class="event-playtime">10:00-14:00</div>
-      <div class="event-club">BK Lejonet</div>
-      <div class="event-heading">Part&#228;vling</div>
+    <article class="kort hem" data-start="960" data-end="1020">
+      <div class="tid"><span class="start">16</span><span class="slut">–17</span></div>
+      <div class="titel">&#197;rsm&#246;te f&#246;r BK Lagspelet</div>
+      <div class="plats"><svg class="ikon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 1.5 12.5H5V21h5.5v-6h3v6H19v-8.5h3.5z"/></svg>Bridgens Hus <span class="klubb">(BK Lagspelet)</span></div>
     </article>
-
-    <article class="event-box">
-      <div class="event-playtime">12:30-16:30</div>
-      <div class="event-club">Hamra BK</div>
-      <div class="event-heading">Part&#228;vling</div>
+    <article class="kort hem" data-start="1080" data-end="1320">
+      <div class="tid"><span class="start">18</span><span class="slut">–22</span></div>
+      <div class="badges"><span class="badge garanti">Partnergaranti</span></div>
+      <div class="titel">Part&#228;vling</div>
+      <div class="plats"><svg class="ikon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 1.5 12.5H5V21h5.5v-6h3v6H19v-8.5h3.5z"/></svg>Bridgens Hus <span class="klubb">(BK Debut)</span></div>
     </article>
-
-    <article class="event-box">
-      <div class="event-playtime">16:00-17:00</div>
-      <div class="event-club">BK Lagspelet</div>
-      <div class="event-heading">&#197;rsm&#246;te f&#246;r BK Lagspelet</div>
+    <article class="kort borta" data-start="1110" data-end="1320">
+      <div class="tid"><span class="start">18:30</span><span class="slut">–22</span></div>
+      <div class="titel">Part&#228;vling</div>
+      <div class="plats"><svg class="ikon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a7 7 0 0 0-7 7c0 5.2 7 13 7 13s7-7.8 7-13a7 7 0 0 0-7-7zm0 9.5a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5z"/></svg>S&#246;dra All&#233;gatan <span class="klubb">(KronViva)</span></div>
     </article>
-
-    <article class="event-box">
-      <div class="event-playtime">18:00-22:00</div>
-      <div class="event-club">BK Debut</div>
-      <ul class="event-heading event-heading-list">
-        <li>Ruter</li>
-        <li>Hj&#228;rter</li>
-        <li>Spader</li>
-      </ul>
-      <div class="partner-guarantee">Partnergaranti</div>
+  </section>
+  <section class="dag" data-date="2026-11-26">
+    <article class="kort hem" data-start="600" data-end="840">
+      <div class="tid"><span class="start">10</span><span class="slut">–14</span></div>
+      <div class="badges"><span class="badge garanti">Partnergaranti</span></div>
+      <div class="titel">Part&#228;vling</div>
+      <div class="plats"><svg class="ikon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 1.5 12.5H5V21h5.5v-6h3v6H19v-8.5h3.5z"/></svg>Bridgens Hus <span class="klubb">(Askims BK)</span></div>
     </article>
-
-    <article class="event-box">
-      <div class="event-playtime">18:30-22:00</div>
-      <div class="event-club">KronViva</div>
-      <div class="event-heading">Onsdagsbridge S&#246;dra All&#233;gatan 4</div>
+    <article class="kort hem" data-start="840" data-end="1065">
+      <div class="tid"><span class="start">14</span><span class="slut">–17:45</span></div>
+      <div class="titel">Part&#228;vling</div>
+      <div class="plats"><svg class="ikon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 1.5 12.5H5V21h5.5v-6h3v6H19v-8.5h3.5z"/></svg>Bridgens Hus <span class="klubb">(BS Damernas)</span></div>
     </article>
-
-  </div>
-</section>
-
-<section class="day-column" aria-label="tors 26 nov">
-  <header class="day-header">tors 26 nov</header>
-  <div class="events">
-    <article class="event-box">
-      <div class="event-playtime">00:00</div>
-      <div class="event-club">BK Everfresh</div>
-      <div class="event-heading">Fuerteventura Huvudt&#228;vling dag 2</div>
+    <article class="kort borta" data-start="885" data-end="1110">
+      <div class="tid"><span class="start">14:45</span><span class="slut">–18:30</span></div>
+      <div class="titel">Part&#228;vling</div>
+      <div class="plats"><svg class="ikon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a7 7 0 0 0-7 7c0 5.2 7 13 7 13s7-7.8 7-13a7 7 0 0 0-7-7zm0 9.5a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5z"/></svg>Br&#228;nn&#246;g&#229;rden <span class="klubb">(Asper&#246;-Br&#228;nn&#246; BK)</span></div>
     </article>
-
-    <article class="event-box">
-      <div class="event-playtime">10:00-14:00</div>
-      <div class="event-club">Askims BK</div>
-      <div class="event-heading">Ruter/Hj&#228;rter</div>
-      <div class="partner-guarantee">Partnergaranti</div>
+    <article class="kort borta" data-start="1050" data-end="-1">
+      <div class="tid"><span class="start">17:30</span></div>
+      <div class="titel">Part&#228;vling</div>
+      <div class="plats"><svg class="ikon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a7 7 0 0 0-7 7c0 5.2 7 13 7 13s7-7.8 7-13a7 7 0 0 0-7-7zm0 9.5a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5z"/></svg>Solhultsgatan 8, Kung&#228;lv <span class="klubb">(Kung&#228;lvs BK)</span></div>
     </article>
-
-    <article class="event-box">
-      <div class="event-playtime">14:00-17:45</div>
-      <div class="event-club">BS Damernas</div>
-      <ul class="event-heading event-heading-list">
-        <li>Kl&#246;ver/Ruter</li>
-        <li>Hj&#228;rter</li>
-        <li>Spader</li>
-      </ul>
+    <article class="kort hem" data-start="1110" data-end="1320">
+      <div class="tid"><span class="start">18:30</span><span class="slut">–22</span></div>
+      <div class="titel">Part&#228;vling</div>
+      <div class="plats"><svg class="ikon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 1.5 12.5H5V21h5.5v-6h3v6H19v-8.5h3.5z"/></svg>Bridgens Hus <span class="klubb">(BK Lyx)</span></div>
     </article>
-
-    <article class="event-box">
-      <div class="event-playtime">14:45-18:30</div>
-      <div class="event-club">Asper&#246;-Br&#228;nn&#246; BK</div>
-      <div class="event-heading">Part&#228;vling</div>
+  </section>
+  <section class="dag" data-date="2026-11-27">
+    <article class="kort hem" data-start="600" data-end="840">
+      <div class="tid"><span class="start">10</span><span class="slut">–14</span></div>
+      <div class="badges"><span class="badge garanti">Partnergaranti</span></div>
+      <div class="titel">Part&#228;vling</div>
+      <div class="plats"><svg class="ikon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 1.5 12.5H5V21h5.5v-6h3v6H19v-8.5h3.5z"/></svg>Bridgens Hus <span class="klubb">(BK Debut)</span></div>
     </article>
-
-    <article class="event-box">
-      <div class="event-playtime">17:30</div>
-      <div class="event-club">Kung&#228;lvs BK</div>
-      <div class="event-heading">Part&#228;vling</div>
+  </section>
+  <section class="dag" data-date="2026-11-28">
+    <article class="kort hem" data-start="660" data-end="900">
+      <div class="tid"><span class="start">11</span><span class="slut">–15</span></div>
+      <div class="titel">Part&#228;vling</div>
+      <div class="plats"><svg class="ikon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 1.5 12.5H5V21h5.5v-6h3v6H19v-8.5h3.5z"/></svg>Bridgens Hus <span class="klubb">(BS Damernas)</span></div>
     </article>
+  </section>
+  <section class="dag" data-date="2026-11-29">
+  </section>
+</div>
 
-    <article class="event-box">
-      <div class="event-playtime">18:30-22:00</div>
-      <div class="event-club">BK Lyx</div>
-      <div class="event-heading">Part&#228;vling</div>
-    </article>
-
-  </div>
-</section>
-
-<section class="day-column" aria-label="fre 27 nov">
-  <header class="day-header">fre 27 nov</header>
-  <div class="events">
-    <article class="event-box">
-      <div class="event-playtime">10:00-14:00</div>
-      <div class="event-club">BK Debut</div>
-      <ul class="event-heading event-heading-list">
-        <li>Mjukisbridge (Kl&#246;vergrupp)</li>
-        <li>Rutergrupp</li>
-        <li>Hj&#228;rtergrupp</li>
-        <li>Spadergrupp</li>
-      </ul>
-      <div class="partner-guarantee">Partnergaranti</div>
-    </article>
-
-  </div>
-</section>
-
-<section class="day-column" aria-label="l&#246;r 28 nov">
-  <header class="day-header-weekend">l&#246;r 28 nov</header>
-  <div class="events">
-    <article class="event-box">
-      <div class="event-playtime">11:00-15:00</div>
-      <div class="event-club">BS Damernas</div>
-      <ul class="event-heading event-heading-list">
-        <li>Damerna bjuder upp-Rutergrupp</li>
-        <li>Damerna bjuder upp-Hj&#228;rtergrupp</li>
-      </ul>
-    </article>
-
-  </div>
-</section>
-
-<section class="day-column" aria-label="s&#246;n 29 nov">
-  <header class="day-header-weekend">s&#246;n 29 nov</header>
-  <div class="events">
-    <div class="no-events">Inga speltillfällen</div>
-  </div>
-</section>
-
-    </main>
-
-    <script>
-    (function () {
-      const man = {jan:0,feb:1,mar:2,apr:3,maj:4,jun:5,jul:6,aug:7,sep:8,okt:9,nov:10,dec:11};
-      const nu = new Date();
-      const idag = new Date(nu.getFullYear(), nu.getMonth(), nu.getDate());
-      const kolumner = [...document.querySelectorAll(".day-column")];
-
-      kolumner.forEach((kol) => {
-        const m = kol.getAttribute("aria-label").match(/(\d{1,2})\s+(\S{3})/);
-        if (!m) return;
-        const dag = new Date(nu.getFullYear(), man[m[2]], +m[1]);
-        if (+dag === +idag) {
-          kol.classList.add("idag");
-          const h = kol.querySelector("header");
-          if (h.classList.contains("day-header-weekend")) kol.classList.add("helg");
-          h.textContent = "Idag, " + h.textContent;
-        }
-      });
-    })();
-    </script>
+<script src="app.js?v=91f16db9"></script>
 </body>
 </html>
