@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex" />
+    <title>Admin – visningstider</title>
+    <style>
+        body { font-family: Inter, 'Segoe UI', Roboto, Arial, sans-serif; background: #0b1220; color: #e5e7eb; margin: 0; padding: 2rem; }
+        main { max-width: 32rem; margin: 0 auto; }
+        h1 { color: #f0b429; margin-top: 0; }
+        label { display: block; margin: 1.2rem 0 0.3rem; font-weight: 600; }
+        input { width: 6rem; padding: 0.5rem; font-size: 1.1rem; border-radius: 0.4rem; border: 1px solid #2a3a5a; background: #111f36; color: #e5e7eb; }
+        button { margin-top: 1.8rem; padding: 0.7rem 1.4rem; font-size: 1.1rem; font-weight: 700; border: 0; border-radius: 0.5rem; background: #f0b429; color: #1a1204; cursor: pointer; }
+        p.hjalp { color: #8a96ad; line-height: 1.5; }
+        #fel { color: #ef6b73; }
+    </style>
+</head>
+<body>
+<main>
+    <h1>Visningstider</h1>
+    <p class="hjalp">Antal sekunder varje sida visas. Första sidan är dagens spel, därefter kommer kommande dagar (flera dagar delar sida när de får plats). Tryck <b>Ladda ner settings.json</b>, ersätt filen <code>settings.json</code> bredvid sidan och pusha. TV:n läser in ändringen vid nästa varv.</p>
+
+    <label for="idag">Spel idag (första sidan)</label>
+    <input id="idag" type="number" min="1" step="1" value="20" /> sekunder
+
+    <label for="ovriga">Övriga sidor (kommande dagar)</label>
+    <input id="ovriga" type="number" min="1" step="1" value="10" /> sekunder
+
+    <div><button id="spara" type="button">Ladda ner settings.json</button></div>
+    <p id="fel"></p>
+</main>
+<script>
+(function () {
+  var nycklar = ['idag', 'ovriga'];
+
+  // Fyll i nuvarande värden om settings.json går att läsa
+  var x = new XMLHttpRequest();
+  x.onreadystatechange = function () {
+    if (x.readyState !== 4) return;
+    try {
+      var s = JSON.parse(x.responseText).sekunder || {};
+      nycklar.forEach(function (k) { if (s[k] >= 1) document.getElementById(k).value = s[k]; });
+    } catch (e) { /* behåll standardvärden */ }
+  };
+  x.open('GET', 'settings.json?t=' + Date.now(), true);
+  try { x.send(); } catch (e) { }
+
+  document.getElementById('spara').onclick = function () {
+    var sekunder = {};
+    for (var i = 0; i < nycklar.length; i++) {
+      var v = Number(document.getElementById(nycklar[i]).value);
+      if (!(v >= 1)) { document.getElementById('fel').textContent = 'Alla tider måste vara minst 1 sekund.'; return; }
+      sekunder[nycklar[i]] = v;
+    }
+    document.getElementById('fel').textContent = '';
+    var blob = new Blob([JSON.stringify({ sekunder: sekunder }, null, 2) + '\n'], { type: 'application/json' });
+    var a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = 'settings.json';
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+  };
+})();
+</script>
+</body>
+</html>
